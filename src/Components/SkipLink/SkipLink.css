@@ -1,0 +1,16 @@
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0px;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  border: none;
+  display: block;
+  padding: 0;
+
+  &:focus {
+    height: auto;
+  }
+}

@@ -1,0 +1,16 @@
+.footer-nav-button {
+  color: black;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s;
+  padding: 0.5rem;
+  display: inline-block;
+
+  &:hover,
+  &:focus {
+    text-decoration-color: black;
+  }
+
+  &.active {
+    color: black;
+  }
+}

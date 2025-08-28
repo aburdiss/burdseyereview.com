@@ -1,0 +1,12 @@
+.footer {
+  background-color: #ddffff;
+  padding-block: 1rem;
+
+  nav {
+    margin-left: -0.5rem;
+  }
+
+  .privacy {
+    margin-left: -0.5rem;
+  }
+}

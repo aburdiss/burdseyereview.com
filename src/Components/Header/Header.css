@@ -1,0 +1,28 @@
+.header {
+  background-color: #ddffff;
+  padding-block: 1rem;
+
+  .layout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    margin-right: -0.5rem;
+  }
+
+  .main-heading {
+    font-size: 2rem;
+
+    a {
+      color: black;
+      text-decoration-color: transparent;
+      transition: text-decoration-color 0.2s;
+      &:hover,
+      &:focus {
+        text-decoration-color: black;
+      }
+    }
+  }
+}
