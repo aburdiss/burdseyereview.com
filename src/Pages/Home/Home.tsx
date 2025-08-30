@@ -1,8 +1,6 @@
-import Wrapper from '@/Components/Wrapper/Wrapper'
-
 export default function Home() {
   return (
-    <Wrapper>
+    <div>
       <hgroup>
         <h1>Burd's Eye Review</h1>
         <h2>Come See the world from a Burd's eye view.</h2>
@@ -14,6 +12,6 @@ export default function Home() {
           things in the Dayton Area!
         </p>
       </hgroup>
-    </Wrapper>
-  )
+    </div>
+  );
 }

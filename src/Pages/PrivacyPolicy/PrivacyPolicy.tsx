@@ -1,8 +1,6 @@
-import Wrapper from '@/Components/Wrapper/Wrapper'
-
 export default function PrivacyPolicy() {
   return (
-    <Wrapper className="PrivacyPolicy-Container">
+    <div className="PrivacyPolicy-Container">
       <h1>Privacy Policy</h1>
       <p>
         At Burd's Eye Review, accessible from burdseyereview.org, one of our
@@ -106,6 +104,6 @@ export default function PrivacyPolicy() {
         By using our website, you hereby consent to our Privacy Policy and agree
         to its Terms and Conditions.
       </p>
-    </Wrapper>
-  )
+    </div>
+  );
 }

@@ -1,7 +1,6 @@
 export const ROUTES = {
   home: '/',
-  music: '/music',
-  recipes: '/recipes',
-  adapt: '/adapt',
+  type: '/review/:type',
+  review: '/review/:type/:review',
   privacy: '/privacy-policy',
-}
+};

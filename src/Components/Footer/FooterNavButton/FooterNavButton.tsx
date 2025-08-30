@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router'
+import { NavLink } from 'react-router';
 
-import './FooterNavButton.css'
-import { cls } from '@/utils/className'
+import './FooterNavButton.css';
+import { cls } from '@/utils/className';
 
 export default function FooterNavButton({
   title,
@@ -12,5 +12,5 @@ export default function FooterNavButton({
     <NavLink className={cls('footer-nav-button', className)} to={href}>
       {title}
     </NavLink>
-  )
+  );
 }

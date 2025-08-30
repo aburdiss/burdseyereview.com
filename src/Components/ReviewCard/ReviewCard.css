@@ -1,0 +1,33 @@
+.review-card {
+  display: inline-block;
+  max-width: 245px;
+  text-decoration: none;
+
+  img {
+    max-width: 100%;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
+    line-height: 1;
+    display: block;
+    border: 3px solid black;
+  }
+
+  .heading {
+    font-weight: bold;
+    font-size: 1.15rem;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    padding-bottom: 15px;
+    transition: color 0.2s;
+  }
+
+  &:hover,
+  &:focus {
+    .heading {
+      color: #fff000;
+    }
+  }
+}
