@@ -1,0 +1,28 @@
+.review-container {
+  .creator {
+    font-weight: 200;
+    font-style: oblique;
+  }
+  .author-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    img {
+      height: 65px;
+      width: 65px;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+  }
+
+  .main-image {
+    width: 300px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 800px) {
+  .main-image {
+    float: right;
+  }
+}

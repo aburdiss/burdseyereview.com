@@ -23,6 +23,7 @@ export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
           `*[_type == "review" && type->slug.current == "${type}"]{
             _id,
             title,
+            creator,
             slug,
             "imageUrl": image.asset->url,
             "imageAlt": image.alt,
