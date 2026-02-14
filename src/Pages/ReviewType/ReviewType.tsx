@@ -10,22 +10,22 @@ import { BsFillDice3Fill, BsMusicNoteBeamed } from 'react-icons/bs';
 
 const LOADING_HEADER = 'Loading';
 
-const SORT_OPTIONS = {
-  Date: 'date',
-  DateReverse: 'date-reverse',
-  Rating: 'rating',
-  RatingReverse: 'rating-reverse',
-  Title: 'title',
-  TitleReverse: 'title-reverse',
-};
+enum SORT_OPTIONS {
+  Date = 'date',
+  DateReverse = 'date-reverse',
+  Rating = 'rating',
+  RatingReverse = 'rating-reverse',
+  Title = 'title',
+  TitleReverse = 'title-reverse',
+}
 
 const SORT_NAMES = {
-  Date: 'Review Date (Latest First)',
-  DateReverse: 'Review Date (Oldest First)',
-  Rating: 'Rating (High to Low)',
-  RatingReverse: 'Rating (Low to High)',
-  Title: 'Title (A to Z)',
-  TitleReverse: 'Title (Z to A)',
+  [SORT_OPTIONS.Date]: 'Review Date (Latest First)',
+  [SORT_OPTIONS.DateReverse]: 'Review Date (Oldest First)',
+  [SORT_OPTIONS.Rating]: 'Rating (High to Low)',
+  [SORT_OPTIONS.RatingReverse]: 'Rating (Low to High)',
+  [SORT_OPTIONS.Title]: 'Title (A to Z)',
+  [SORT_OPTIONS.TitleReverse]: 'Title (Z to A)',
 };
 
 const SORT_VALUES = {
@@ -41,7 +41,7 @@ async function fetchAlbums(
   setLoading: Function,
   setPageData: Function,
   type: string | undefined,
-  sort: string
+  sort: SORT_OPTIONS
 ) {
   setLoading(true);
   setPageData([]);
@@ -120,19 +120,23 @@ export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
                   <select
                     value={sort}
                     onChange={function (event) {
-                      setSort(event.target.value);
+                      setSort(event.target.value as SORT_OPTIONS);
                       fetchAlbums(
                         setLoading,
                         setPageData,
                         type,
-                        event.target.value
+                        event.target.value as SORT_OPTIONS
                       );
                     }}
                   >
-                    {Object.keys(SORT_OPTIONS).map(function (opt) {
+                    {(
+                      Object.keys(SORT_OPTIONS) as Array<
+                        keyof typeof SORT_OPTIONS
+                      >
+                    ).map(function (opt) {
                       return (
                         <option key={opt} value={SORT_OPTIONS[opt]}>
-                          {SORT_NAMES[opt]}
+                          {SORT_NAMES[SORT_OPTIONS[opt]]}
                         </option>
                       );
                     })}
