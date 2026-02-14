@@ -15,7 +15,6 @@ export default function ReviewCard({
   showType?: boolean;
 }>) {
   const { type } = useParams();
-  console.log(review);
   return (
     <NavLink
       to={

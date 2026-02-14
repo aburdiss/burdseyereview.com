@@ -6,33 +6,71 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import './ReviewType.css';
 import Loader from '@/Components/Loader/Loader';
+import { BsFillDice3Fill, BsMusicNoteBeamed } from 'react-icons/bs';
 
 const LOADING_HEADER = 'Loading';
+
+const SORT_OPTIONS = {
+  Date: 'date',
+  DateReverse: 'date-reverse',
+  Rating: 'rating',
+  RatingReverse: 'rating-reverse',
+  Title: 'title',
+  TitleReverse: 'title-reverse',
+};
+
+const SORT_NAMES = {
+  Date: 'Review Date (Latest First)',
+  DateReverse: 'Review Date (Oldest First)',
+  Rating: 'Rating (High to Low)',
+  RatingReverse: 'Rating (Low to High)',
+  Title: 'Title (A to Z)',
+  TitleReverse: 'Title (Z to A)',
+};
+
+const SORT_VALUES = {
+  [SORT_OPTIONS.Date]: 'date desc',
+  [SORT_OPTIONS.Rating]: 'rating desc',
+  [SORT_OPTIONS.Title]: 'title asc',
+  [SORT_OPTIONS.DateReverse]: 'date asc',
+  [SORT_OPTIONS.RatingReverse]: 'rating asc',
+  [SORT_OPTIONS.TitleReverse]: 'title desc',
+};
+
+async function fetchAlbums(
+  setLoading: Function,
+  setPageData: Function,
+  type: string | undefined,
+  sort: string
+) {
+  setLoading(true);
+  setPageData([]);
+  const data = await client.fetch(
+    `*[_type == "review" && type->slug.current == "${type}"]{
+            _id,
+            title,
+            date,
+            creator,
+            slug,
+            rating,
+            "imageUrl": image.asset->url,
+            "imageAlt": image.alt,
+          } | order(${SORT_VALUES[sort]})`
+  );
+  setPageData(data);
+  setLoading(false);
+}
 
 export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
   const [pageData, setPageData] = useState<ReviewCardType[]>([]);
   const [loading, setLoading] = useState(true);
   const [pageHeader, setPageHeader] = useState(LOADING_HEADER);
+  const [sort, setSort] = useState(SORT_OPTIONS.Date);
   const { type } = useParams();
 
   useEffect(
     function getData() {
-      async function fetchAlbums() {
-        setLoading(true);
-        const data = await client.fetch(
-          `*[_type == "review" && type->slug.current == "${type}"]{
-            _id,
-            title,
-            creator,
-            slug,
-            "imageUrl": image.asset->url,
-            "imageAlt": image.alt,
-          }`
-        );
-        setPageData(data);
-        setLoading(false);
-      }
-      fetchAlbums();
+      fetchAlbums(setLoading, setPageData, type, sort);
     },
     [type]
   );
@@ -52,16 +90,61 @@ export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
 
   return (
     <div>
-      <h1>{loading ? LOADING_HEADER : pageHeader}</h1>
-      <div className="review-card-container">
+      <h1>
+        {loading ? (
+          LOADING_HEADER
+        ) : (
+          <span>
+            <span>
+              {
+                {
+                  games: <BsFillDice3Fill size="20" title="Game" />,
+                  music: <BsMusicNoteBeamed size="20" title="Music" />,
+                }[type ?? '']
+              }
+            </span>{' '}
+            {pageHeader}
+          </span>
+        )}
+      </h1>
+      <div>
         {(() => {
           if (loading) {
             return <Loader />;
           }
           if (pageData.length > 0) {
-            return pageData.map(function (review: ReviewCardType) {
-              return <ReviewCard key={review._id} review={review} />;
-            });
+            return (
+              <>
+                <div className="review-sort-container">
+                  Sort By
+                  <select
+                    value={sort}
+                    onChange={function (event) {
+                      setSort(event.target.value);
+                      fetchAlbums(
+                        setLoading,
+                        setPageData,
+                        type,
+                        event.target.value
+                      );
+                    }}
+                  >
+                    {Object.keys(SORT_OPTIONS).map(function (opt) {
+                      return (
+                        <option key={opt} value={SORT_OPTIONS[opt]}>
+                          {SORT_NAMES[opt]}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className="review-card-container">
+                  {pageData.map(function (review: ReviewCardType) {
+                    return <ReviewCard key={review._id} review={review} />;
+                  })}
+                </div>
+              </>
+            );
           }
           return (
             <div>No {pageHeader} Content Found. Please Try again later!</div>

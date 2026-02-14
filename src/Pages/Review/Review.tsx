@@ -25,6 +25,7 @@ export default function Review() {
             title,
             creator,
             rating,
+            date,
             "authorName": author->name,
             "authorImageUrl": author->image.asset->url,
             "authorImageAlt": author->image.alt,
@@ -67,7 +68,17 @@ export default function Review() {
                     alt={pageData.authorImageAlt}
                   />
                 )}
-                <div>Written by {pageData.authorName}</div>
+                <div>
+                  <div>Written by {pageData.authorName}</div>
+                  <time dateTime={pageData.date}>
+                    {new Date(pageData.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      timeZone: 'UTC',
+                    })}
+                  </time>
+                </div>
               </div>
               <img
                 className="main-image"

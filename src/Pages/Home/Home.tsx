@@ -36,8 +36,7 @@ export default function Home() {
   return (
     <div>
       <hgroup>
-        <h1>Burd's Eye Review</h1>
-        <h2>Come See the world from a Burd's eye view.</h2>
+        <h1>Come See the world from a Burd's eye view.</h1>
         <p>
           This is a site where we will post musings and reviews of things in our
           lives. We'll start up an email newsletter when we feel like doing this

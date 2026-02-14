@@ -1,3 +1,7 @@
+.review-sort-container {
+  margin-bottom: 2rem;
+}
+
 .review-card-container {
   display: flex;
   flex-wrap: wrap;

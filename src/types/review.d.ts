@@ -4,6 +4,8 @@ export type ReviewCardType = {
   reviewType: string?;
   reviewTypeSlug: string?;
   creator: string;
+  date: string;
+  rating: number;
   slug: {
     current: string;
   };
@@ -16,6 +18,7 @@ export type ReviewType = {
   title: string;
   creator: string;
   rating: number;
+  date: string;
   slug: {
     current: string;
   };
