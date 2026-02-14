@@ -15,6 +15,7 @@ export type ReviewType = {
   _id: string;
   title: string;
   creator: string;
+  rating: number;
   slug: {
     current: string;
   };

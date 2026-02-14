@@ -1,8 +1,14 @@
 .review-container {
+  margin-top: 1.5rem;
   .creator {
     font-weight: 200;
     font-style: oblique;
   }
+
+  .rating-container {
+    margin-bottom: 2rem;
+  }
+
   .author-section {
     display: flex;
     gap: 1rem;

@@ -1,0 +1,20 @@
+.share-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-block: 1rem;
+  padding: 0.5rem;
+  background-color: #ddffff;
+
+  span, a {
+    line-height: 1;
+  }
+
+  a {
+    color: blue;
+    transition: color 0.2s;
+    &:hover, &:focus {
+      color: black;
+    }
+  }
+}

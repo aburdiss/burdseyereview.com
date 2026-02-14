@@ -7,6 +7,8 @@ import type { ReviewType } from '@/types/review';
 import { ROUTES } from '@/constants/routes';
 import { sentenceCase } from '@/utils/sentenceCase';
 import './Review.css';
+import Rating from '@/Components/Rating/Rating';
+import Share from '@/Components/Share/Share';
 
 export default function Review() {
   const [loading, setLoading] = useState(false);
@@ -22,6 +24,7 @@ export default function Review() {
             _id,
             title,
             creator,
+            rating,
             "authorName": author->name,
             "authorImageUrl": author->image.asset->url,
             "authorImageAlt": author->image.alt,
@@ -55,6 +58,8 @@ export default function Review() {
                 <span className="creator">{pageData.creator}</span>
               </h1>
 
+              <Rating stars={pageData.rating} />
+
               <div className="author-section">
                 {pageData.authorImageUrl && (
                   <img
@@ -64,10 +69,15 @@ export default function Review() {
                 )}
                 <div>Written by {pageData.authorName}</div>
               </div>
-              <img className='main-image' src={pageData.imageUrl} alt={pageData.imageAlt} />
+              <img
+                className="main-image"
+                src={pageData.imageUrl}
+                alt={pageData.imageAlt}
+              />
               <div>
                 <PortableText value={pageData.body} />
               </div>
+              <Share title={pageData.title} />
             </>
           );
         }

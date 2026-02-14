@@ -21,6 +21,7 @@ export default function Home() {
           "reviewTypeSlug": type->slug.current,
           title,
           creator,
+          rating,
           slug,
           "imageUrl": image.asset->url,
           "imageAlt": image.alt,
@@ -62,6 +63,7 @@ export default function Home() {
                   <ReviewCard
                     key={review._id}
                     review={review}
+                    showType
                     customTo={ROUTES.review
                       .replace(':type', review.reviewTypeSlug ?? 'not-found')
                       .replace(':review', review.slug.current)}
