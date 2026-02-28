@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import './ReviewType.css';
 import Loader from '@/Components/Loader/Loader';
-import { BsFillDice3Fill, BsMusicNoteBeamed } from 'react-icons/bs';
+import { BsFillDice3Fill, BsMusicNoteBeamed, BsBook } from 'react-icons/bs';
 
 const LOADING_HEADER = 'Loading';
 
@@ -100,6 +100,7 @@ export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
                 {
                   games: <BsFillDice3Fill size="20" title="Game" />,
                   music: <BsMusicNoteBeamed size="20" title="Music" />,
+                books: <BsBook size="20" title="Book" />,
                 }[type ?? '']
               }
             </span>{' '}

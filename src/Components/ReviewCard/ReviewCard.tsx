@@ -1,7 +1,7 @@
 import { ROUTES } from '@/constants/routes';
 import type { ReviewCardType } from '@/types/review';
 import { NavLink, useParams } from 'react-router';
-import { BsFillDice3Fill, BsMusicNoteBeamed } from 'react-icons/bs';
+import { BsFillDice3Fill, BsMusicNoteBeamed, BsBook } from 'react-icons/bs';
 
 import './ReviewCard.css';
 
@@ -31,6 +31,7 @@ export default function ReviewCard({
             {
               Games: <BsFillDice3Fill size="20" title="Game" />,
               Music: <BsMusicNoteBeamed size="20" title="Music" />,
+              Books: <BsBook size="20" title="Book" />,
             }[review.reviewType ?? '']
           }
         </div>
