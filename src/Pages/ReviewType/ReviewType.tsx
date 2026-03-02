@@ -96,7 +96,7 @@ export default function ReviewType({ routes }: Readonly<{ routes: Route[] }>) {
         ) : (
           <span>
             <span>
-              <ReviewIcon type={type} />
+              <ReviewIcon type={type ?? ''} />
             </span>{' '}
             {pageHeader}
           </span>
