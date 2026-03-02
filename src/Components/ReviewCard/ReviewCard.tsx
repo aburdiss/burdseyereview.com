@@ -1,9 +1,9 @@
 import { ROUTES } from '@/constants/routes';
 import type { ReviewCardType } from '@/types/review';
 import { NavLink, useParams } from 'react-router';
-import { BsFillDice3Fill, BsMusicNoteBeamed, BsBook } from 'react-icons/bs';
 
 import './ReviewCard.css';
+import ReviewIcon from '../ReviewIcon/ReviewIcon';
 
 export default function ReviewCard({
   review,
@@ -27,13 +27,7 @@ export default function ReviewCard({
     >
       {showType && (
         <div className="review-type-indicator">
-          {
-            {
-              Games: <BsFillDice3Fill size="20" title="Game" />,
-              Music: <BsMusicNoteBeamed size="20" title="Music" />,
-              Books: <BsBook size="20" title="Book" />,
-            }[review.reviewType ?? '']
-          }
+          <ReviewIcon type={review.reviewType?.toLowerCase() ?? ''} />
         </div>
       )}
       <img src={review.imageUrl} alt={review.imageAlt} />
