@@ -3,4 +3,5 @@ export const ROUTES = {
   type: '/review/:type',
   review: '/review/:type/:review',
   privacy: '/privacy-policy',
+  about: '/about',
 };

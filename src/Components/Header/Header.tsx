@@ -4,6 +4,7 @@ import type { Route } from '@/types/route';
 import { NavLink } from 'react-router';
 import NavButton from './NavButton/NavButton';
 import Layout from '../Layout/Layout';
+import { ROUTES } from '@/constants/routes';
 
 export default function Header({ routes }: Readonly<{ routes: Route[] }>) {
   return (
@@ -18,10 +19,11 @@ export default function Header({ routes }: Readonly<{ routes: Route[] }>) {
               <NavButton
                 key={route.name}
                 title={route.name}
-                href={route.slug}
+                href={ROUTES.type.replace(':type', route.slug)}
               />
             );
           })}
+          <NavButton title="About" href={ROUTES.about} />
         </nav>
       </Layout>
     </header>

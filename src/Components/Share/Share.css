@@ -10,7 +10,7 @@
     line-height: 1;
   }
 
-  a {
+  a, button {
     color: blue;
     transition: color 0.2s;
     &:hover, &:focus {

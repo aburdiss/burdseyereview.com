@@ -5,6 +5,7 @@ import './App.css';
 import Home from '@/Pages/Home/Home';
 import Review from '@/Pages/Review/Review';
 import PrivacyPolicy from '@/Pages/PrivacyPolicy/PrivacyPolicy';
+import About from '@/Pages/About/About';
 
 import { ROUTES } from '@/constants/routes';
 import ReviewType from '@/Pages/ReviewType/ReviewType';
@@ -34,6 +35,7 @@ export default function App() {
         <Route path={ROUTES.review} element={<Review />} />
         <Route path={ROUTES.type} element={<ReviewType routes={routes} />} />
         <Route path={ROUTES.privacy} element={<PrivacyPolicy />} />
+        <Route path={ROUTES.about} element={<About />} />
       </Routes>
     </Wrapper>
   );

@@ -1,5 +1,8 @@
 .review-sort-container {
   margin-bottom: 2rem;
+  select {
+    margin-left: 0.5rem;
+  }
 }
 
 .review-card-container {

@@ -20,6 +20,7 @@ export default function Footer({ routes }: Readonly<{ routes: Route[] }>) {
               />
             );
           })}
+          <FooterNavButton href={ROUTES.about} title="About" />
         </nav>
         <div>
           Copyright © {new Date().getFullYear()} Alexander and Courtney Burdiss

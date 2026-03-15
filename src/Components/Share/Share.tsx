@@ -1,11 +1,11 @@
-import { MdMailOutline } from 'react-icons/md';
+import { MdMailOutline, MdShare } from 'react-icons/md';
 import './Share.css';
 
 export default function Share({ title }: { title?: string }) {
   const formattedTitle = `${title ? title + ' ' : ''}Burd's Eye Review`;
   async function nativeShare() {
     try {
-      await navigator.share({
+      await navigator?.share({
         title: formattedTitle,
         text: window.location.href,
       });
@@ -21,8 +21,13 @@ export default function Share({ title }: { title?: string }) {
       >
         <MdMailOutline />
       </a>
-      {navigator.canShare() && (
-        <button className="button-reset" onClick={nativeShare}></button>
+      {navigator?.canShare({
+        title: formattedTitle,
+        text: window.location.href,
+      }) && (
+        <button className="button-reset" onClick={nativeShare}>
+          <MdShare />
+        </button>
       )}
     </div>
   );
