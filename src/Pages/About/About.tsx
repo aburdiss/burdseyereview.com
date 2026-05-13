@@ -1,3 +1,5 @@
+import en from '@/constants/en.json';
+
 export default function About() {
   return (
     <div>
@@ -21,21 +23,16 @@ export default function About() {
       </p>
 
       <ol reversed>
-        <li>
-          Outstanding. Always want to interact, expect this will never change.
-        </li>
-        <li>Excellent. Always willing to interact.</li>
-        <li>
-          Very good. Enjoy this a lot, suggest it, and will likely never turn it
-          down.
-        </li>
-        <li>Good. Usually willing to consider.</li>
-        <li>Fair. Would occasionally consider again if in the right mood.</li>
-        <li>Average. No significant appeal.</li>
-        <li>Not so good. Doesn't get me.</li>
-        <li>Poor. Likely won't interact with again.</li>
-        <li>Very poor. Annoying. I never want to interact with this again.</li>
-        <li>You won't catch me dead with this.</li>
+        <li>{en.rating10}</li>
+        <li>{en.rating9}</li>
+        <li>{en.rating8}</li>
+        <li>{en.rating7}</li>
+        <li>{en.rating6}</li>
+        <li>{en.rating5}</li>
+        <li>{en.rating4}</li>
+        <li>{en.rating3}</li>
+        <li>{en.rating2}</li>
+        <li>{en.rating1}</li>
       </ol>
     </div>
   );
