@@ -6,10 +6,6 @@ import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import './Rating.css';
 import { ROUTES } from '@/constants/routes';
 
-interface DynamicJson {
-  [key: string]: string;
-}
-
 export default function Rating({ stars = 0 }: { stars: number }) {
   const numberOfCompleteStars = Math.floor(stars);
   const hasHalfStar = !Number.isInteger(stars);
