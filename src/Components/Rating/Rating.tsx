@@ -6,6 +6,10 @@ import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import './Rating.css';
 import { ROUTES } from '@/constants/routes';
 
+interface DynamicJson {
+  [key: string]: string;
+}
+
 export default function Rating({ stars = 0 }: { stars: number }) {
   const numberOfCompleteStars = Math.floor(stars);
   const hasHalfStar = !Number.isInteger(stars);
@@ -17,8 +21,8 @@ export default function Rating({ stars = 0 }: { stars: number }) {
       className="rating-container"
       title={
         (hasHalfStar
-          ? `(${numberOfCompleteStars}/10: ${en['rating' + numberOfCompleteStars]})\n(${numberOfCompleteStars + 1}/10: ${en['rating' + (numberOfCompleteStars + 1)]})`
-          : en['rating' + numberOfCompleteStars]) +
+          ? `(${numberOfCompleteStars}/10: ${en[('rating' + numberOfCompleteStars) as keyof typeof en]})\n(${numberOfCompleteStars + 1}/10: ${en[('rating' + (numberOfCompleteStars + 1)) as keyof typeof en]})`
+          : en[('rating' + numberOfCompleteStars) as keyof typeof en]) +
         '\n\nClick to learn how we rate things'
       }
     >
